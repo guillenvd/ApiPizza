@@ -1,18 +1,42 @@
-# Slim Framework 3 Skeleton Application
+# PIZZAPI With Slim Framework 3 
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+## Example off ajax with JavasCript
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+```javascript
+$.ajax({
+     url:"http://pizzapi.esy.es/services/user/signup",
+     dataType: 'jsonp', 
+     data:  { name: 'David', 
+              address: 'Palmas', 
+              zipCode: '24010', 
+              phone: '6462236390', 
+              email: 'dguilessn@arkusnexus.com', 
+              gender: 'M',
+              user: 'gulsn', password:'12348'},
+     success:function(json){
+         console.log(json);
+     },
+     error:function(){
+         alert("Error");
+     }      
+});
+alert(s);
+```
 
-## Install the Application
+## Elments of the requests.
+	url: Path of the section for request.
+	dataType: Jsonp (For CrossCityRequest).
+	data: Parameter for the request.
 
-Run this command from the directory in which you want to install your new Slim Framework application.
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+## The api return a array 
+	Status: fail/done	
+	code: the code indicate what was happend
+	msg: Message of the process
+	array: When the api request its a get
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+## Code list.
+| code number| mesage | which indicates|
+|------------|:------:|---------------:|
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
 
-That's it! Now go build something cool.
