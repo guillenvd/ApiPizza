@@ -40,3 +40,25 @@ alert(s);
 |------------|:------:|---------------:|
 
 
+## PATH LIST API METHODS.
+
+###ESTRUCTURE OF THE PATHS
+	http://pizzapi.esy.es/services/SECTION/METHOD
+### It's needed send the data with the name how its indicate in this readme.
+
+| signupCustomer |  DATA REQUIRED | DATA RETURNED |
+|------------|:------:|---------------:|
+| user/signup	| name, address, zipCode, phone, email, gender, user, password | |
+|	|	| |
+|	|	| |
+|	|	| |
+|	|	| |
+|	|	| |
+|	|	| |
+|	|	| |
+|	|	| |
+|	|	| |
+|	|	| |
+
+
+
