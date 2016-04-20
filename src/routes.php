@@ -3,8 +3,8 @@
 
 $app->any('/user/[{data}]', function ($request, $response, $args) {
     header("Content-Type: application/json");
-	require_once '../src/lib/connection.php';
-	$obj = new connection;
+	require_once '../src/lib/user.php';
+	$obj = new User;
 	switch ($args['data']) {
 	    case "signup":
 	       $obj->signupCustomer($request->getQueryParams());
@@ -20,8 +20,24 @@ $app->any('/user/[{data}]', function ($request, $response, $args) {
 	        return null;
 	    break;
 	}
+});
 
 
+$app->any('/products/[{data}]', function ($request, $response, $args) {
+    header("Content-Type: application/json");
+	require_once '../src/lib/products.php';
+	$obj = new Products;
+	switch ($args['data']) {
+	    case "getProducts":
+	       $obj->getProducts($request->getQueryParams());
+	    break;
+	    case "makeOrder":
+	       $obj->orderCustomer($request->getQueryParams());
+	    break;
+	    default:
+	        return null;
+	    break;
+	}
 });
 
 
