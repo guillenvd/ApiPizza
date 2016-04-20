@@ -5,9 +5,9 @@ require_once '../src/lib/connection.php';
 	{
 		
 		public function getProducts($data){
-		  if(isset($data['catergory'])){ 
+		  if(isset($data['category'])){ 
 			$products =array();$sizes =array(); $i=0;
-			$sql =  "SELECT a.price as price, b.description as description, d.model_desc as models FROM product a , product_type b, models d WHERE b.category_id = ".(int)$data['catergory']." and a.type_id = b.id and d.id = a.model_id";
+			$sql =  "SELECT a.price as price, b.description as description, d.model_desc as models FROM product a , product_type b, models d WHERE b.category_id = ".(int)$data['category']." and a.type_id = b.id and d.id = a.model_id";
 				$result = $this->conn->query($sql);
 
 			 $sqlSizes =  "SELECT DISTINCT(d.model_desc) FROM product a , product_type b, models d WHERE b.category_id = 1 and a.type_id = b.id and d.id = a.model_id";
@@ -23,10 +23,10 @@ require_once '../src/lib/connection.php';
 				        $sizes[$i] = $row;
 				        $i++;
 				    }
+				    echo $_GET['callback']."(".json_encode(array('code'=>19,'products'=>$products,'size'=>$sizes)).");";
 				}else{
-				    echo $_GET['callback']."(".json_encode(array('code'=>20,"msg"=>"something Goes bad")).");";
+				    echo $_GET['callback']."(".json_encode(array('code'=>20,"msg"=>"something Goes bad or no exist that category")).");";
 				}
-				 echo $_GET['callback']."(".json_encode(array('code'=>19,'products'=>$products,'size'=>$sizes)).");";
 		   }else{
 		   	echo $_GET['callback']."(".json_encode(array('status' =>'fail','code'=>'12', 'msg'=>'you are missing some required fields')).");";
 			}

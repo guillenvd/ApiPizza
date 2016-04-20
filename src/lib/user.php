@@ -42,10 +42,13 @@ class User extends Connection
 	}
 
 	public function checkLoginCustomer($data){
-		$sql = "SELECT user FROM customer  WHERE user ='".$data['user']."' and pass ='".MD5($data['password'])."'";
+		$sql = "SELECT user, id FROM customer  WHERE user ='".$data['user']."' and pass ='".MD5($data['password'])."'";
 		$result = $this->conn->query($sql);
 		if ($result->num_rows) {
-		    echo json_encode(array('status' =>'done', 'code'=>'15', 'msg'=>'Login successfully'));
+			while( $row = $this->conn->query($sql)->fetch_assoc() ) {
+				echo json_encode(array('status' =>'done', 'code'=>'15', 'msg'=>'Login successfully', 'data'=>array('user'=>$row["user"], 'id'=>$row["id"])));
+				exit;
+			}
 		} else {
 		    //echo  "Error: " . $sql . "<br>" . $this->conn->error;
 		   	echo json_encode(array('status' =>'fail', 'code'=>'16', 'msg'=>'Bad Login'));

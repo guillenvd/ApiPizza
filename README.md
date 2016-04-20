@@ -56,7 +56,7 @@ $.ajax({
 | PATH |  DATA REQUIRED | DATA RETURNED |
 |------------|:------:|---------------:|
 | user/signup	| name, address, zipCode, phone, email, gender, user, password | 'code'=>'10' , 'code'=>'11' , 'code'=>'12', 'code'=>'13' , 'code'=>'14'|
-|	user/login  |	user, password|  'code'=>'15' , 'code'=>'16' |
+|	user/login  |	user, password|  'code'=>'15' , 'code'=>'16', array(user, id) |
 |	user/update | name, address, zipCode, phone, email, gender, user, password 	| 'code'=>'17', 'code'=>'18'|
 |	|	| |
 |	|	| |
