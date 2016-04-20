@@ -23,9 +23,9 @@ require_once '../src/lib/connection.php';
 				        $sizes[$i] = $row;
 				        $i++;
 				    }
-				    echo $_GET['callback']."(".json_encode(array('code'=>19,'products'=>$products,'size'=>$sizes)).");";
+				    echo $_GET['callback']."(".json_encode(array('code'=>'19','products'=>$products,'size'=>$sizes)).");";
 				}else{
-				    echo $_GET['callback']."(".json_encode(array('code'=>20,"msg"=>"something Goes bad or no exist that category")).");";
+				    echo $_GET['callback']."(".json_encode(array('code'=>'20',"msg"=>"something Goes bad or no exist that category")).");";
 				}
 		   }else{
 		   	echo $_GET['callback']."(".json_encode(array('status' =>'fail','code'=>'12', 'msg'=>'you are missing some required fields')).");";
@@ -42,17 +42,17 @@ require_once '../src/lib/connection.php';
 					$sql2 = "INSERT INTO `pizz`.`item_order` (`order_id`, `product_id`, `quantity`, `description`) VALUES ('".$this->conn->insert_id."','".$data['product_id']."', '".$data['quantity']."', '".$data['description']."');";
 
 						if ($this->conn->query($sql2) === TRUE) {
-						   echo $_GET['callback']."(".json_encode(array('status' =>'done','code'=>'10', 'msg'=>'Order Created successfully')).");";
+						   echo $_GET['callback']."(".json_encode(array('status' =>'done','code'=>'21', 'msg'=>'Order Created successfully')).");";
 						} else {
 						    if($this->env == "dev")
 						    	echo "Error: " . $sql . "<br>" . $this->conn->error;
-						    echo $_GET['callback']."(".json_encode(array('status' =>'fail','code'=>'11','msg'=>'Something going bad with the database')).");";}
+						    echo $_GET['callback']."(".json_encode(array('status' =>'fail','code'=>'20','msg'=>'Something going bad with the database')).");";}
 
 
 				} else {
 				    if($this->env == "dev")
 				    	echo "Error: " . $sql . "<br>" . $this->conn->error;
-				    echo $_GET['callback']."(".json_encode(array('status' =>'fail','code'=>'11','msg'=>'Something going bad with the database')).");";}
+				    echo $_GET['callback']."(".json_encode(array('status' =>'fail','code'=>'20','msg'=>'Something going bad with the database')).");";}
 				    //$conn->insert_id
 			}else{
 				echo $_GET['callback']."(".json_encode(array('status' =>'fail','code'=>'12', 'msg'=>'you are missing some required fields')).");";

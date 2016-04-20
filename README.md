@@ -39,12 +39,15 @@ $.ajax({
 |'code'=>'10'| create account|
 |'code'=>'11'| internal error|
 |'code'=>'12'| missings fields|
-|'code'=>'13'|This user already exists|
+|'code'=>'13'| This user already exists|
 |'code'=>'14'| This email already exists.|
 |'code'=>'15'| Login successfully|
 |'code'=>'16'| Bad Login|
-|'code'=>'17'|update successfully  |
-|'code'=>'18'|bad update|
+|'code'=>'17'| update successfully  |
+|'code'=>'18'| bad update|
+|'code'=>19 | Exists Products and Sizes |
+|'code'=>20 | something Goes bad or no exist that category |  
+|'code'=>'21'| Order Created successfully|
 
 ## PATH LIST API METHODS.
 
@@ -58,8 +61,8 @@ $.ajax({
 | user/signup	| name, address, zipCode, phone, email, gender, user, password | 'code'=>'10' , 'code'=>'11' , 'code'=>'12', 'code'=>'13' , 'code'=>'14'|
 |	user/login  |	user, password|  'code'=>'15' , 'code'=>'16', array(user, id) |
 |	user/update | name, address, zipCode, phone, email, gender, user, password 	| 'code'=>'17', 'code'=>'18'|
-|	|	| |
-|	|	| |
+|	products/getProducts| category | 'code'=>'19' 'products'=>array(),'size'=>array(), 'code'=>'20', 'code'=>'12' |
+|	products/makeOrder|	order_date, customer_id, total_price, order_distance, product_id, quantity, description| 'code'=>'21', 'code'=>'20' , 'code'=>'12' |
 |	|	| |
 |	|	| |
 |	|	| |
