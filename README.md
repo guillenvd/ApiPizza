@@ -61,7 +61,7 @@ $.ajax({
 | user/signup	| name, address, zipCode, phone, email, gender, user, password | 'code'=>'10' , 'code'=>'11' , 'code'=>'12', 'code'=>'13' , 'code'=>'14'|
 |	user/login  |	user, password|  'code'=>'15' , 'code'=>'16', array(user, id) |
 |	user/update | name, address, zipCode, phone, email, gender, user, password 	| 'code'=>'17', 'code'=>'18'|
-|	products/getProducts| category | 'code'=>'19' 'products'=>array(),'size'=>array(), 'code'=>'20', 'code'=>'12' |
+|	products/getProducts| category | 'code'=>'19' 'products'=>array( array() ),'size'=>array(  array() ), 'code'=>'20', 'code'=>'12' |
 |	products/makeOrder|	order_date, customer_id, total_price, order_distance, product_id, quantity, description| 'code'=>'21', 'code'=>'20' , 'code'=>'12' |
 |	|	| |
 |	|	| |
