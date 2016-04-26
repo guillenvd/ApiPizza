@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} pizzapi\.esy.es [NC]
+RewriteCond %{REQUEST_URI} ^/$
+Rewriterule ^(.*)$ http://pizzapi.esy.es/testModule/index.html [L,R=301]
+
+<IfModule pagespeed_module>
+    ModPagespeed on
+    ModPagespeedEnableFilters remove_comments
+</IfModule>

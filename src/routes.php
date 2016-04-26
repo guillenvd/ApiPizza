@@ -31,13 +31,35 @@ $app->any('/products/[{data}]', function ($request, $response, $args) {
 	    case "getProducts":
 	       $obj->getProducts($request->getQueryParams());
 	    break;
-	    case "makeOrder":
-	       $obj->orderCustomer($request->getQueryParams());
-	    break;
 	    default:
 	        return null;
 	    break;
 	}
 });
+
+$app->any('/order/[{data}]', function ($request, $response, $args) {
+    header("Content-Type: application/json");
+	require_once '../src/lib/order.php';
+	$obj = new Products;
+	switch ($args['data']) {
+	    case "makeOrder":
+	       $obj->orderCustomer($request->getQueryParams());
+	    break;
+	    case "orderById":
+	       $obj->orderById($request->getQueryParams());
+	    break;
+	    case "orderByCustomer":
+	       $obj->orderByCustomer($request->getQueryParams());
+	    break;	
+	   	case "countOrders":
+	       $obj->countOrders($request->getQueryParams());
+	    break;	
+	    default:
+	        return null;
+	    break;
+	}
+});
+
+
 
 

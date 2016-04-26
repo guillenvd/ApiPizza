@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>PIZZAPI</title>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <style type="text/css" media="screen">
+   .fixed-footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+  } 
+  #results{
+    word-break: break-all;
+  }
+  #Ajax{
+    word-break: break-all;
+  }
+  .zero-margin{
+  margin:0px !important;
+  }
+  .zero-padding{
+  padding:0px !important;
+
+  }
+  .greyBoders{
+    border-style: solid;
+    border-color: #a0a2a5;
+    border-radius: 15px;
+
+  }
+  .marginLeft{
+    margin-left: 15px !important;
+  }
+  .marginBottom{
+    margin-bottom: 20px;
+  }
+  </style>
+</head>
+<body>
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="#" onclick="ajaxFile.login();">Login</a></li>
+    <li><a href="#" onclick="ajaxFile.signup();">SignUp</a></li>
+    <li><a href="#" onclick="ajaxFile.updateUser();">UpdateUser</a></li>
+    <li><a href="#" onclick="ajaxFile.getUserData();">GetUserData</a></li>
+</ul>
+<ul id="dropdown2" class="dropdown-content">
+    <li><a href="#" onclick="ajaxFile.getProducts();">Get Products</a></li>
+</ul>
+
+<ul id="dropdown3" class="dropdown-content">
+    <li><a href="#" onclick="ajaxFile.makeOrder();">Make order</a></li>
+    <li><a href="#" onclick="ajaxFile.orderById();">Get order by ID</a></li>
+    <li><a href="#" onclick="ajaxFile.orderByCustomer();">Get orders by CustomerId</a></li>
+    <li><a href="#" onclick="ajaxFile.countOrders();">Count Orders</a></li>
+</ul>
+
+  <nav class="red">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">PIZZAUBER</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a class="dropdown-button" href="#!" data-activates="dropdown1">
+          User Options<i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+        <li>
+          <a class="dropdown-button" href="#!" data-activates="dropdown2">
+          Products Options<i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+        <li>
+          <a class="dropdown-button" href="#!" data-activates="dropdown3">
+          Orders Options<i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="#">Login</a></li>
+        <li><a href="#">SignUp</a></li>
+        <li><a href="#">UpdateUser</a></li>
+        <li><a href="#">GetUserData</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="section marginLeft">
+
+    <div class="row">
+      <div class="col s6 greyBoders">
+        <h5 id="titleBig"> Enter the next fields</h5>
+        <div class="col s12 marginBottom">
+          <div class="row" id="Action">
+            
+          </div>
+          <button class="btn waves-effect waves-light red lighten-1"  id="sendAjax">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+
+
+      <div class="col s5 marginLeft greyBoders">
+          <h5>API REQUEST RESULTS:</h5>
+          <div class="col s12" id="results"></div>
+          <h5>AJAXs Format:</h5>
+          <div class="col s12 marginBottom" id="Ajax"></div>
+      </div>
+
+
+    </div>
+          
+  </div> 
+
+  <footer class="page-footer red fixed-footer zero-margin zero-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Pizza API </h5>
+
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="red-text text-lighten-3" href="#">David Guillen Vazquez</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="js/jquery-1.12.3.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/ajaxFile.js"></script>
+  <script>
+    $(document).ready(function(){
+      ajaxFile.init();  
+    });
+  </script>
+
+  </body>
+</html>

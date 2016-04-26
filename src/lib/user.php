@@ -40,18 +40,31 @@ class User extends Connection
 			return $row["emails"];
 		}
 	}
+	public function userData($data){
+		$sql = "SELECT * FROM customer  WHERE user ='".$data['username']."'";
+		$result = $this->conn->query($sql);
+		if ($result->num_rows) {
+			while( $row = $this->conn->query($sql)->fetch_assoc() ) {
+			echo $_GET['callback']."(". json_encode(array('status' =>'done', 'code'=>'15', 'msg'=>'User Exists', 'data'=>array('name'=>$row["name"], 'address'=>$row["address"], 'zipCode'=>$row["zipCode"], 'phone'=>$row["phone"], 'email'=>$row["email"], 'gender'=>$row["gender"], 'user'=>$row["user"]))) .");";
+				exit;
+			}
+		} else {
+		   	// echo  "Error: " . $sql . "<br>" . $this->conn->error;
+		   	echo $_GET['callback']."(".json_encode(array('status' =>'fail', 'code'=>'16', 'msg'=>'User no exists.')) .");";
+		}
 
+	}
 	public function checkLoginCustomer($data){
 		$sql = "SELECT user, id FROM customer  WHERE user ='".$data['user']."' and pass ='".MD5($data['password'])."'";
 		$result = $this->conn->query($sql);
 		if ($result->num_rows) {
 			while( $row = $this->conn->query($sql)->fetch_assoc() ) {
-				echo json_encode(array('status' =>'done', 'code'=>'15', 'msg'=>'Login successfully', 'data'=>array('user'=>$row["user"], 'id'=>$row["id"])));
+			echo $_GET['callback']."(". json_encode(array('status' =>'done', 'code'=>'15', 'msg'=>'Login successfully', 'data'=>array('user'=>$row["user"], 'id'=>$row["id"]))) .");";
 				exit;
 			}
 		} else {
 		    //echo  "Error: " . $sql . "<br>" . $this->conn->error;
-		   	echo json_encode(array('status' =>'fail', 'code'=>'16', 'msg'=>'Bad Login'));
+		   	echo $_GET['callback']."(".json_encode(array('status' =>'fail', 'code'=>'16', 'msg'=>'Bad Login')) .");";
 		}
 	}
 	/**
@@ -63,7 +76,7 @@ class User extends Connection
 	public function updateCustomer($data){
 		if((isset($data['name'])&& isset($data['address'])&& isset($data['zipCode'])&& isset($data['phone'])&& isset($data['email'])&& isset($data['password'])&& isset($data['user']))&&  ($data['name']&& $data['address']&& $data['zipCode']&& $data['phone']&& $data['email']&& $data['password']&& $data['user']) ){
 			
-			$sql = "UPDATE customer SET name='".$data['name']."', address='".$data['address']."', zipCode='".$data['zipCode']."', phone='".$data['phone']."', email='".$data['email']."', password='".MD5($data['password'])."' WHERE user='".$data['user']."'";
+			$sql = "UPDATE customer SET name='".$data['name']."', address='".$data['address']."', zipCode='".$data['zipCode']."', phone='".$data['phone']."', email='".$data['email']."', pass='".MD5($data['password'])."' WHERE user='".$data['user']."'";
 
 			if ($this->conn->query($sql) === TRUE) {
 				echo $_GET['callback']."(".json_encode(array('status' =>'done', 'code'=>'17', 'msg'=>'update successfully')).");";
