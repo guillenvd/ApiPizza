@@ -15,7 +15,9 @@ $app->any('/user/[{data}]', function ($request, $response, $args) {
 	    case "update":
 	       $obj->updateCustomer($request->getQueryParams());
 	    break;
-
+	      case "getUserData":
+	       $obj->userData($request->getQueryParams());
+	    break;
 	    default:
 	        return null;
 	    break;
